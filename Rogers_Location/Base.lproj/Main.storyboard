@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Rogers_Location" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,55 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYw-2y-KHo">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Trash" id="3Xs-xk-Tld" userLabel="Trash">
+                                        <connections>
+                                            <action selector="clearPin:" destination="BYZ-38-t0r" id="iVd-dK-79f"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MAh-JF-rET"/>
+                                    <barButtonItem title="Remember Location" id="zMc-5g-LNR" userLabel="Remeber Location">
+                                        <connections>
+                                            <action selector="dropPin:" destination="BYZ-38-t0r" id="dJ2-lh-5zJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="PJv-Ox-IwI"/>
+                                    <barButtonItem style="plain" id="kLw-jj-2BY">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="vV5-Xb-Yhg">
+                                            <rect key="frame" x="559" y="11" width="22" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="hybrid" scrollEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HzG-aC-D2U">
+                                <rect key="frame" x="11" y="28" width="589" height="513"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eFY-XR-CDZ"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HzG-aC-D2U" firstAttribute="centerX" secondItem="uYw-2y-KHo" secondAttribute="centerX" id="D3O-Co-W5K"/>
+                            <constraint firstItem="uYw-2y-KHo" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="JVF-iv-wB8"/>
+                            <constraint firstItem="uYw-2y-KHo" firstAttribute="top" secondItem="HzG-aC-D2U" secondAttribute="bottom" constant="21" id="NPO-3A-RaU"/>
+                            <constraint firstItem="uYw-2y-KHo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QQ3-RR-hUm"/>
+                            <constraint firstItem="HzG-aC-D2U" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="SAr-8T-Rg5"/>
+                            <constraint firstItem="HzG-aC-D2U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="59" id="a33-y0-yz0"/>
+                            <constraint firstAttribute="trailing" secondItem="uYw-2y-KHo" secondAttribute="trailing" id="jEM-cd-kxt"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="HzG-aC-D2U" id="Gbu-Cs-r8F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="89" y="195"/>
         </scene>
     </scenes>
 </document>
